@@ -15,11 +15,7 @@ export default {
   name: 'App',
   data(){
     return {
-      todos:[
-        {title:'taskA',status:false,id:'dqweq11'},
-        {title:'taskB',status:true,id:'dqwe1q11'},
-        {title:'taskC',status:false,id:'dqwe12q11'},
-      ]
+      todos:[]
     }
   },
   mounted(){
@@ -29,6 +25,7 @@ export default {
     this.$bus.$on('deleDoneTodo',this.deleDoneTodo)
     this.$bus.$on('showStatus',this.showStatus)
     // this.todos = JSON.parse(window.localStorage.getItem('todos'))
+    this.todos = JSON.parse(localStorage.getItem('todos')) || []
   },
   methods:{
     addTodo(todo){
@@ -61,6 +58,14 @@ export default {
   Header,
   List,
   Footer
+  },
+  watch:{
+    todos:{
+      handler(newValue){
+        localStorage.setItem('todos',JSON.stringify(newValue))
+      },
+      deep:true
+    }
   }
 }
 </script>
