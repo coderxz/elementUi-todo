@@ -25,7 +25,7 @@ export default {
     this.$bus.$on('deleDoneTodo',this.deleDoneTodo)
     this.$bus.$on('showStatus',this.showStatus)
     // this.todos = JSON.parse(window.localStorage.getItem('todos'))
-    this.todos = JSON.parse(localStorage.getItem('todos')) || []
+    this.todos = JSON.parse(localStorage.getItem('TODOS_KEY')) || []
   },
   methods:{
     addTodo(todo){
@@ -62,7 +62,7 @@ export default {
   watch:{
     todos:{
       handler(newValue){
-        localStorage.setItem('todos',JSON.stringify(newValue))
+        localStorage.setItem('TODOS_KEY',JSON.stringify(newValue))
       },
       deep:true
     }
