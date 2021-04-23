@@ -28,7 +28,7 @@ export default {
     this.$bus.$on('changeStatus',this.changeStatus)
     this.$bus.$on('deleDoneTodo',this.deleDoneTodo)
     this.$bus.$on('showStatus',this.showStatus)
-    
+    // this.todos = JSON.parse(window.localStorage.getItem('todos'))
   },
   methods:{
     addTodo(todo){

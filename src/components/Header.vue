@@ -22,6 +22,7 @@ export default {
         this.$message.error('Please fill in the information correctly！')
       }
       this.title = ''
+      window.localStorage.setItem('todos',[JSON.stringify({title:this.title,id:Math.random(),status:false})])
     },
     add(){
       this.addTodo()

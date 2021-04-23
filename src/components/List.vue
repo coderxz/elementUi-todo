@@ -23,7 +23,7 @@ data(){
   }
 },
 mounted(){
-  console.log(this.todos);
+
 },
 components:{
   Item

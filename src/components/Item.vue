@@ -37,7 +37,6 @@ methods:{
   },
   deleTodo(){
     this.$bus.$emit('deleTodo',this.index)
-    console.log(this.index);
   }
 },
 watch:{
