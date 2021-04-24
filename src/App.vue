@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <span>{{nowTime}}</span>
     <h1 class="top">TODOLIST</h1>
     <Header/>
     <List :todos="todos"/>
@@ -15,8 +16,12 @@ export default {
   name: 'App',
   data(){
     return {
-      todos:[]
+      todos:[],
+      nowTime:this.moment().format('YYYY-MM-DD HH:mm:ss')
     }
+  },
+  created(){
+    this.getTime1()
   },
   mounted(){
     this.$bus.$on('deleTodo',this.deleTodo)
@@ -52,6 +57,13 @@ export default {
       this.todos.forEach(item=>{
         item.status = flag
       })
+    },
+    getTime1(){
+      clearInterval(this.timer)
+      this.timer=setInterval(()=>{
+        this.nowTime = this.moment().format('YYYY-MM-DD HH:mm:ss')
+        return this.moment().format('YYYY-MM-DD HH:mm:ss')
+      },1000)
     }
   },
   components: {
@@ -66,6 +78,9 @@ export default {
       },
       deep:true
     }
+  },
+  computed:{
+
   }
 }
 </script>
